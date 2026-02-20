@@ -1,0 +1,30 @@
+import type { Task } from "./types.js";
+export type TaskFilter = (task: Task) => boolean;
+export declare function filterTasks(tasks: Task[], ...filters: TaskFilter[]): Task[];
+export declare function byProject(projectID: string): TaskFilter;
+export declare function byLabel(label: string): TaskFilter;
+export declare function byPriority(priority: number): TaskFilter;
+export declare function byMinPriority(minPriority: number): TaskFilter;
+export declare function isCompleted(): TaskFilter;
+export declare function isActive(): TaskFilter;
+export declare function createdAfter(time: Date): TaskFilter;
+export declare function createdBefore(time: Date): TaskFilter;
+export declare function dueToday(): TaskFilter;
+export declare function dueThisWeek(): TaskFilter;
+export declare function dueNextWeek(): TaskFilter;
+export declare function overdue(): TaskFilter;
+export declare function containsText(text: string): TaskFilter;
+export declare function hasDuration(maxMinutes: number): TaskFilter;
+export interface TimeRange {
+    start: Date;
+    end: Date;
+}
+export declare function today(): TimeRange;
+export declare function yesterday(): TimeRange;
+export declare function thisWeek(): TimeRange;
+export declare function nextWeek(): TimeRange;
+export declare function lastWeek(): TimeRange;
+export declare function thisMonth(): TimeRange;
+export declare function lastMonth(): TimeRange;
+export declare function thisQuarter(): TimeRange;
+export declare function createdInRange(tr: TimeRange): TaskFilter;
