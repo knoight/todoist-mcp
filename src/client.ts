@@ -35,7 +35,18 @@ function stripUndefined(obj: Record<string, unknown>): Record<string, unknown> {
   return result;
 }
 
-export class TodoistClient {
+export interface TodoistClientInterface {
+  getTasks(): Promise<Task[]>;
+  getTaskByID(taskID: string): Promise<Task>;
+  getCompletedTasks(): Promise<CompletedTask[]>;
+  getProjects(): Promise<Project[]>;
+  createTask(req: CreateTaskRequest): Promise<Task>;
+  updateTask(taskID: string, req: UpdateTaskRequest): Promise<void>;
+  completeTask(taskID: string): Promise<void>;
+  deleteTask(taskID: string): Promise<void>;
+}
+
+export class TodoistClient implements TodoistClientInterface {
   private token: string;
 
   constructor(token: string) {

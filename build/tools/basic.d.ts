@@ -1,3 +1,3 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { TodoistClient } from "../client.js";
-export declare function registerBasicTools(server: McpServer, client: TodoistClient): void;
+import { type TodoistClientInterface } from "../client.js";
+export declare function registerBasicTools(server: McpServer, client: TodoistClientInterface): void;

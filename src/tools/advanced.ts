@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { TodoistClient, taskURL } from "../client.js";
+import { type TodoistClientInterface, taskURL } from "../client.js";
 import type { Task } from "../types.js";
 import {
   filterTasks,
@@ -43,7 +43,7 @@ function formatDate(d: Date): string {
 
 export function registerAdvancedTools(
   server: McpServer,
-  client: TodoistClient
+  client: TodoistClientInterface
 ) {
   server.tool(
     "summarize_completed",

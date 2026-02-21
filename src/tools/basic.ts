@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { TodoistClient, taskURL, projectURL } from "../client.js";
+import { type TodoistClientInterface, taskURL, projectURL } from "../client.js";
 import type { Task } from "../types.js";
 import {
   filterTasks,
@@ -25,7 +25,7 @@ function taskToOutput(task: Task) {
   };
 }
 
-export function registerBasicTools(server: McpServer, client: TodoistClient) {
+export function registerBasicTools(server: McpServer, client: TodoistClientInterface) {
   server.tool(
     "list_tasks",
     "List Todoist tasks with optional filters (project, label, priority, status)",
